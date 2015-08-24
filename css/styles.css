@@ -14,10 +14,8 @@ p {
   margin-bottom: 20px;
 }
 .btn {
-  background: #428bca;
-  border: #357ebd solid 1px;
-  border-radius: 3px;
-  color: #fff;
+  background: #000;
+  color: #FFF;
   display: inline-block;
   font-size: 14px;
   padding: 8px 15px;
@@ -26,10 +24,7 @@ p {
   min-width: 60px;
   position: relative;
   transition: color .1s ease;
-  /* top: 40em;*/
-}
-.btn:hover {
-  background: #357ebd;
+  border: 0 none;
 }
 .btn.btn-big {
   font-size: 18px;
@@ -37,20 +32,17 @@ p {
   min-width: 100px;
 }
 .btn-close {
-  color: #aaaaaa;
+  color: #FFF;
   font-size: 30px;
   text-decoration: none;
   position: absolute;
   right: 5px;
   top: 0;
 }
-.btn-close:hover {
-  color: #919191;
-}
 .modal:before {
   content: "";
   display: none;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.9);
   position: fixed;
   top: 0;
   left: 0;
@@ -69,14 +61,12 @@ p {
 }
 .modal-dialog {
   background: #fefefe;
-  border: #333333 solid 1px;
-  border-radius: 5px;
-  margin-left: -200px;
+  margin-left: -330px;
   position: fixed;
   left: 50%;
   top: -100%;
   z-index: 11;
-  width: 360px;
+  width: 660px;
   -webkit-transform: translate(0, -500%);
   -ms-transform: translate(0, -500%);
   transform: translate(0, -500%);
@@ -85,24 +75,33 @@ p {
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
 }
+@media (max-width: 660px) {
+  .modal-dialog {
+    width: 100%;
+    margin-left: 0;
+    left: inherit;
+  }
+  .modal-dialog .modal-body img {
+    width: 100%;
+  }
+}
 .modal-body {
   padding: 20px;
+}
+.modal-body img {
+  margin-bottom: 20px;
 }
 .modal-header,
 .modal-footer {
   padding: 10px 20px;
 }
 .modal-header {
-  border-bottom: #eeeeee solid 1px;
+  background: #000;
+  color: #FFF;
 }
 .modal-header h2 {
   font-size: 20px;
 }
 .modal-footer {
-  border-top: #eeeeee solid 1px;
   text-align: right;
-}
-/*ADDED TO STOP SCROLLING TO TOP*/
-#close {
-  display: none;
 }
