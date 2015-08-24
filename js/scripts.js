@@ -1,9 +1,15 @@
 (function ($) {
 	"use strict";
 
-	$('#modal-button').on('click', function(){
-		$('#modal').show();
+	$('#modal-show').on('click', function(){
+		$('#modal').addClass('show');
 	});
+
+	$('#modal-close').on('click', function(){
+		$('#modal').removeClass('show');
+	});
+
+
 
 	function centerModal() {
 		//$(this).css('display', 'block');
