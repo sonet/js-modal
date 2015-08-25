@@ -2,14 +2,20 @@
 	"use strict";
 
 	$('#modal-show').on('click', function(){
-		$('#modal').addClass('show');
+		$('#modal').addClass('visible');
 	});
 
 	$('#modal-close').on('click', function(){
-		$('#modal').removeClass('show');
+		$('#modal').removeClass('visible');
 	});
 
-
+	$('body').bind('mousewheel', function(e) { // on scroll
+	    var $div = $('.modal-body');
+	    // set div scroll top offset to current + extra from this scroll
+	    $div.scrollTop($div.scrollTop()
+	                    - e.originalEvent.wheelDelta);
+	    return false; // prevent body scrolling
+	});
 
 	function centerModal() {
 		//$(this).css('display', 'block');
