@@ -20,52 +20,13 @@ p{
 	margin-bottom: @space/2;
 }
 
-#modal {
-	display: none;
-	background: rgba(0,0,0,.9);
-	position: fixed;
-	top: 0; left: 0; right: 0; bottom: 0;
-	z-index: 10;
-	&.visible {
-		display: block;
-		#modal-dialog {
-			display: block;
-		}
-	}
+img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
 }
 
-#modal-dialog {
-	display: none;
-	background: #FFF;
-	margin-left: -330px;
-	position: fixed;
-	left: 50%;
-	top: 25%;
-	z-index: 11;
-	width: 660px;
-}
-
-#modal-header {
-	padding: @space/4 @space/2;
-	background: #000;
-	color: #FFF;
-}
-
-#modal-body {
-	max-height: 320px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	padding: @space/2;
-	img {
-		margin-bottom: @space/2;
-		width: 100%;
-	}
-	p:first-child {
-		margin-top: 0;
-	}
-}
-
-// button
+// buttons
 .btn{
 	background: #000;
 	color: #FFF;
@@ -86,10 +47,81 @@ p{
 	position: absolute; right: 5px; top: 0;
 }
 
-@media (max-width: 768px) {
-	#modal-dialog{
-		width: 100%;
-		margin-left: 0;
-		left: inherit;
+#modal {
+	display: none;
+	background: rgba(0,0,0,.9);
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 10;
+	&.visible {
+		display: block;
+		#modal-dialog {
+			display: block;
+		}
 	}
 }
+
+#modal-dialog {
+	position: absolute;
+	margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+	width: 640px;
+	height: 640px;
+	background: #FFF;
+}
+
+@media (max-width: 640px) {
+	#modal-dialog {
+		width: 100%;
+	}
+}
+
+@media (max-height: 640px) {
+	#modal-dialog {
+		height: 100%;
+	}
+}
+
+//#modal-dialog {
+//	display: none;
+//	background: #FFF;
+//	margin: auto;
+// 	position: absolute;
+// 	top: 0; left: 0; bottom: 0; right;
+//	z-index: 11;
+//	min-width: 320px;
+//	min-height: 320px;
+//}
+//
+//#modal-header {
+//	padding: @space/4 @space/2;
+//	background: #234562;
+//	color: #FFF;
+//}
+//
+//#modal-body {
+//	overflow-y: auto;
+//	overflow-x: hidden;
+//	padding: @space/2;
+//	p:first-child {
+//		margin-top: 0;
+//	}
+//}
+//
+
+
+
+//@media (max-width: 768px), (max-height: 768px) {
+//	#modal-dialog {
+////		position: fixed;
+////		top: 0; left: 0; right: 0; bottom: 0;
+////		margin: 0;
+////		max-width: 660px;
+////		max-height: 660px;
+//		margin-left: -310px;
+//	}
+//
+//	#modal-body {
+//		padding: 0;
+//	}
+//}
