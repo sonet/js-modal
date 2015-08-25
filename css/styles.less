@@ -1,8 +1,6 @@
-// vars
 @font-color: #333;
 @space: 4rem;
 
-// body
 body {
 	color: @font-color;
 	font: 200 17px/1.75 'Helvetica Neue', Arial, sans-serif;
@@ -22,31 +20,22 @@ p{
 	margin-bottom: @space/2;
 }
 
-
-// modal
-#modal{
-	// background
-	&:before{
-		content: "";
-		display: none;
-		background: rgba(0,0,0,.9);
-		position: fixed;
-		top: 0; left: 0; right: 0; bottom: 0;
-		z-index: 10;
-	}
+#modal {
+	display: none;
+	background: rgba(0,0,0,.9);
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 10;
 	&.visible {
-		&:before{
-			display: block;
-		}
-		// dialog
+		display: block;
 		#modal-dialog {
 			display: block;
 		}
 	}
 }
 
-// dialog
 #modal-dialog {
+	display: none;
 	background: #FFF;
 	margin-left: -330px;
 	position: fixed;
@@ -54,10 +43,15 @@ p{
 	top: 25%;
 	z-index: 11;
 	width: 660px;
-	display: none;
 }
 
-.modal-body {
+#modal-header {
+	padding: @space/4 @space/2;
+	background: #000;
+	color: #FFF;
+}
+
+#modal-body {
 	max-height: 320px;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -69,12 +63,6 @@ p{
 	p:first-child {
 		margin-top: 0;
 	}
-}
-
-.modal-header {
-	padding: @space/4 @space/2;
-	background: #000;
-	color: #FFF;
 }
 
 // button
@@ -90,6 +78,7 @@ p{
 	position: relative;
 	border: 0 none;
 }
+
 .btn-close{
 	color: #FFF;
 	font-size: 30px;
@@ -98,7 +87,7 @@ p{
 }
 
 @media (max-width: 768px) {
-	.modal-dialog{
+	#modal-dialog{
 		width: 100%;
 		margin-left: 0;
 		left: inherit;

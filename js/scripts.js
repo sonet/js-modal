@@ -5,12 +5,16 @@
 		$('#modal').addClass('visible');
 	});
 
-	$('#modal-close').on('click', function(){
+	$('#modal-close, #modal').on('click', function(){
 		$('#modal').removeClass('visible');
 	});
 
+	$(document).keyup(function(e) {
+	  if (e.keyCode == 27) $('#modal').removeClass('visible');   // esc
+	});
+
 	$('body').bind('mousewheel', function(e) { // on scroll
-	    var $div = $('.modal-body');
+	    var $div = $('#modal-body');
 	    // set div scroll top offset to current + extra from this scroll
 	    $div.scrollTop($div.scrollTop()
 	                    - e.originalEvent.wheelDelta);
