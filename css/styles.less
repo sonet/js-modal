@@ -16,9 +16,6 @@ h1{
 h2{
 	font-size: 20px;
 }
-p{
-	margin-bottom: @space/2;
-}
 
 img {
 	display: inline-block;
@@ -103,13 +100,27 @@ img {
 	overflow-x: hidden;
 	overflow-y: auto;
 	height: 100%;
-	background: yellowgreen;
+	background: #FFF;
 	position: absolute;
+}
 
-	img {
-		border: 1px solid #000;
-		margin-bottom: 1rem;
+#facility-departments {
+	h4 {
+		text-transform: uppercase;
 	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+#facility-photo {
+	border: 1px solid #000;
+	margin-bottom: 1rem;
+}
+
+#facility-address {
+	font-weight: bold;
 }
 
 //#modal-dialog {
