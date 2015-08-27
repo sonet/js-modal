@@ -6,9 +6,23 @@
 	// handle the show button
 	$('#modal-show').on('click', function(){
 		$('#modal').addClass('visible');
-		//$(win).css('margin-left', $(win).width()/2);
-		//console.log($(win).css('margin-left'));
+		$('#facility-photo').show();
+		$('#facility-departments').show();
 	});
+
+	$('#modal-show2').on('click', function(){
+		$('#modal').addClass('visible');
+		$('#facility-photo').hide();
+	});
+
+	$('#modal-show3').on('click', function(){
+		$('#modal').addClass('visible');
+		$('#facility-photo').hide();
+		$('#facility-departments').hide();
+	});
+
+	//$(win).css('margin-left', $(win).width()/2);
+	//console.log($(win).css('margin-left'));
 
 	// handle the close button
 	$('#modal-close').on('click', function(){
