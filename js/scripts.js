@@ -1,7 +1,10 @@
 (function ($) {
 	"use strict";
 	var	modal = $('#modal'),
-		dialog = $('#modal-dialog');
+		dialog = $('#modal-dialog'),
+		title = $('#modal-title');
+
+	console.log(scrollbarWidth());
 
 	// handle the show button
 	$('#modal-show').on('click', function(){
@@ -13,12 +16,15 @@
 	$('#modal-show2').on('click', function(){
 		$('#modal').addClass('visible');
 		$('#facility-photo').hide();
+		$('#facility-departments').show();
+		$('#modal-title').text('Address + Department List');
 	});
 
 	$('#modal-show3').on('click', function(){
 		$('#modal').addClass('visible');
 		$('#facility-photo').hide();
 		$('#facility-departments').hide();
+		$('#modal-title').text('Address Only');
 	});
 
 	//$(win).css('margin-left', $(win).width()/2);
@@ -53,8 +59,27 @@
 		}
 	});
 
+	/**
+	 * determine the scrollbar width
+	 * @returns {number}
+	 */
+	function scrollbarWidth() {
+		var testDiv = document.createElement("div");
+		testDiv.className = "scrollbar-measure";
+		document.body.appendChild(testDiv);
+		var w = testDiv.offsetWidth - testDiv.clientWidth;
+		document.body.removeChild(testDiv);
+		return(w);
+	}
+
 }(jQuery));
 
+// useful links:
+// http://www.matanich.com/2013/01/07/viewport-size/
+// http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php
+// http://davidwalsh.name/detect-scrollbar-width
+
+// useful code snippets:
 //function centerModal() {
 //$(this).css('display', 'block');
 //var $dialog  = $(this).find(".modal-dialog"),
