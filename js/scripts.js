@@ -8,6 +8,9 @@
 	function showModal(title,content) {
 		$('#modal').addClass('visible');
 		_title.text(title);
+		if (content) {
+			_body.html(content);
+		}
 		resizeModal();
 	}
 
@@ -53,8 +56,8 @@
 
 	// close the modal dialog when the user clicks outside of it
 	$(document).mouseup(function(e) {
-		if (!dialog.is(e.target) // if the target of the click isn't the container...
-			&& dialog.has(e.target).length === 0 // ... nor a descendant of the container
+		if (!_dialog.is(e.target) // if the target of the click isn't the container...
+			&& _dialog.has(e.target).length === 0 // ... nor a descendant of the container
 			&& e.target.tagName.toUpperCase() !== 'A') // ... ignore anchor clicks
 		{
 			closeModal();
@@ -84,31 +87,23 @@
 	$('#modal-show').on('click', function(){
 		$('#facility-photo').show();
 		$('#facility-departments').show();
-		showModal('Photo + Address + Department List' + $(title).width(), '');
-		resizeModal();
+		showModal('Photo + Address + Department List');
 	});
 
 	$('#modal-show2').on('click', function(){
 		$('#facility-photo').hide();
 		$('#facility-departments').show();
-
-		$('#modal').addClass('visible');
-		title.text('Address + Department List');
+		showModal('Address + Department List');
 
 
-		resizeModal();
+
 	});
 
 	$('#modal-show3').on('click', function(){
-		showModal('Address Only', '');
 		$('#facility-photo').hide();
 		$('#facility-departments').hide();
-		resizeModal();
+		showModal('Address Only', '');
 	});
-
-
-
-
 
 }(jQuery));
 
