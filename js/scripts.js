@@ -15,7 +15,7 @@
 	}
 
 	function closeModal() {
-		$('#modal').removeClass('visible');
+		$(_modal).removeClass('visible');
 	}
 
 	function resizeModal() {
@@ -26,14 +26,12 @@
 			});
 		} else {
 			var h_viewport = $(window).height();
-			var h_title = $('#modal-title').height();
+			var h_title = $(_title).height();
 			$(body).css({
 				'height': (100 - h_title*100/h_viewport) + '%'
 			});
 		}
 	}
-
-
 
 	// close button
 	$('#modal-close').on('click', function() {
@@ -93,16 +91,40 @@
 	$('#modal-show2').on('click', function(){
 		$('#facility-photo').hide();
 		$('#facility-departments').show();
-		showModal('Address + Department List');
+		showModal('Address + Department List', '' + '<div class="facility-detail-content"> <div class="typography">' +
+		'			<p class="facility-address">' +
+		'				70 Arts Circle<br>' +
+		'				Evanston, IL 60208' +
+		'			</p>' +
 
-
-
+		'	<h4>History</h4>' +
+		'			<p>The Music and Communication Building is the new home of the Bienen School of Music and the theater and performance studies departments in the School of Communication. The building, opened in 2015, includes classrooms, teaching labs, academic faculty offices, teaching studios, practice rooms, student lounges and administrative offices. Also included is Mary B. Galvin Recital Hall, Shirley Welsh Ryan Opera Theater, and David and Carol McClintock Choral and Recital Room.</p>' +
+		'			<div class="facility-departments">' +
+		'				<h4>Departments in this building</h4>' +
+		'				<ul class="facility-departments-list">' +
+		'					<li><a href="http://offices.northwestern.edu/detail/138" target="_blank">Choral Organizations</a></li>' +
+		'					<li><a href="http://offices.northwestern.edu/detail/143" target="_blank">Conducting and Ensembles Program, Bienen School</a></li>' +
+		'					<li><a href="http://offices.northwestern.edu/detail/279" target="_blank">Jazz Studies Program, Bienen School</a></li>' +
+		'					<li><a href="http://offices.northwestern.edu/detail/319" target="_blank">Music Academy, Bienen School</a></li>' +
+		'					<li><a href="http://offices.northwestern.edu/detail/318" target="_blank">Music, Henry and Leigh Bienen School of</a></li>' +
+		'					<li><a href="http://offices.northwestern.edu/detail/411" target="_blank">Piano Program, Bienen School of Music</a></li>' +
+		'					<li><a href="http://offices.northwestern.edu/detail/552" target="_blank">Voice and Opera Program, Bienen School</a></li>' +
+		'				</ul>' +
+		'			</div>' +
+		'				<p>For a list of all University departments see the <a href="http://offices.northwestern.edu/" target="_blank">Office Directory</a></p>' +
+		'		</div>' +
+		'	</div>');
 	});
 
 	$('#modal-show3').on('click', function(){
 		$('#facility-photo').hide();
 		$('#facility-departments').hide();
-		showModal('Address Only', '');
+		showModal(
+			'Address Only',
+			'<p class="facility-address">' +
+			'70 Arts Circle<br>' +
+			'Evanston, IL 60208' +
+			'</p>');
 	});
 
 }(jQuery));
