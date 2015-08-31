@@ -1,89 +1,50 @@
 (function ($) {
 	"use strict";
-	var	modal = $('#modal'),
-		dialog = $('#modal-dialog'),
-		title = $('#modal-title'),
-		body = $('#modal-body');
+	var	_modal = $('#modal'),
+		_dialog = $('#modal-dialog'),
+		_title = $('#modal-title'),
+		_body = $('#modal-body');
 
-	console.log(scrollbarWidth());
-
-	// handle the show button
-	$('#modal-show').on('click', function(){
+	function showModal(title,content) {
 		$('#modal').addClass('visible');
-		$('#facility-photo').show();
-		$('#facility-departments').show();
-		$('#modal-title').text('Photo + Address + Department List' + $('#modal-title').width());
+		_title.text(title);
+		resizeModal();
+	}
 
-		if ( $(window).height() > 768 || $(window).width() > 768) {
-			$(body).css({
-				'width': '100%',
-				'height': '100%'
-			});
-		} else {
-			var h_viewport = $(window).height();
-			var h_title = $('#modal-title').height();
-			$(body).css({
-				//'width': '640px',
-				'height': (100 - h_title*100/h_viewport) + '%'
-			});
-		}
-	});
-
-	$('#modal-show2').on('click', function(){
-		$('#modal').addClass('visible');
-		$('#facility-photo').hide();
-		$('#facility-departments').show();
-		$('#modal-title').text('Address + Department List');
-
-		if ( $(window).height() > 768 || $(window).width() > 768) {
-			$(body).css({
-				'width': '100%',
-				'height': '100%'
-			});
-		} else {
-			var h_viewport = $(window).height();
-			var h_title = $('#modal-title').height();
-			$(body).css({
-				//'width': '640px',
-				'height': (100 - h_title*100/h_viewport) + '%'
-			});
-		}
-	});
-
-	$('#modal-show3').on('click', function(){
-		$('#modal').addClass('visible');
-		$('#facility-photo').hide();
-		$('#facility-departments').hide();
-		$('#modal-title').text('Address Only');
-
-		if ( $(window).height() > 768 || $(window).width() > 768) {
-			$(body).css({
-				'width': '100%',
-				'height': '100%'
-			});
-		} else {
-			var h_viewport = $(window).height();
-			var h_title = $('#modal-title').height();
-			$(body).css({
-				//'width': '320px',
-				'height': (100 - h_title*100/h_viewport) + '%'
-			});
-		}
-	});
-
-	// handle the close button
-	$('#modal-close').on('click', function(){
+	function closeModal() {
 		$('#modal').removeClass('visible');
+	}
+
+	function resizeModal() {
+		if ( $(window).height() > 768 || $(window).width() > 768) {
+			$(_body).css({
+				'width': '100%',
+				'height': '100%'
+			});
+		} else {
+			var h_viewport = $(window).height();
+			var h_title = $('#modal-title').height();
+			$(body).css({
+				'height': (100 - h_title*100/h_viewport) + '%'
+			});
+		}
+	}
+
+
+
+	// close button
+	$('#modal-close').on('click', function() {
+		closeModal();
 	});
 
-	// esc-key to close the modal dialog
+	// esc-key
 	$(document).keyup(function(e) {
-		if (e.keyCode == 27) $('#modal').removeClass('visible');   // esc
+		if (e.keyCode == 27) closeModal();   // esc
 	});
 
-	// scroll the modal dialog
+	// modal content scroll
 	$('body').bind('mousewheel', function(e) { // on scroll
-		var $div = $('#modal-body');
+		var $div = $(_body);
 		// set div scroll top offset to current + extra from this scroll
 		$div.scrollTop($div.scrollTop()
 		- e.originalEvent.wheelDelta);
@@ -96,7 +57,7 @@
 			&& dialog.has(e.target).length === 0 // ... nor a descendant of the container
 			&& e.target.tagName.toUpperCase() !== 'A') // ... ignore anchor clicks
 		{
-			$('#modal').removeClass('visible');
+			closeModal();
 		}
 	});
 
@@ -113,6 +74,42 @@
 		return(w);
 	}
 
+
+
+
+
+
+	// handle the show buttons
+
+	$('#modal-show').on('click', function(){
+		$('#facility-photo').show();
+		$('#facility-departments').show();
+		showModal('Photo + Address + Department List' + $(title).width(), '');
+		resizeModal();
+	});
+
+	$('#modal-show2').on('click', function(){
+		$('#facility-photo').hide();
+		$('#facility-departments').show();
+
+		$('#modal').addClass('visible');
+		title.text('Address + Department List');
+
+
+		resizeModal();
+	});
+
+	$('#modal-show3').on('click', function(){
+		showModal('Address Only', '');
+		$('#facility-photo').hide();
+		$('#facility-departments').hide();
+		resizeModal();
+	});
+
+
+
+
+
 }(jQuery));
 
 // useful links:
@@ -120,18 +117,4 @@
 // http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php
 // http://davidwalsh.name/detect-scrollbar-width
 
-// useful code snippets:
-//function centerModal() {
-//$(this).css('display', 'block');
-//var $dialog  = $(this).find(".modal-dialog"),
-//offset       = ($(window).height() - $dialog.height()) / 2,
-//bottomMargin = parseInt($dialog.css('marginBottom'), 10);
-//
-//// Make sure you don't hide the top part of the modal w/ a negative margin if it's longer than the screen height, and keep the margin equal to the bottom margin of the modal
-//if(offset < bottomMargin) offset = bottomMargin;
-//$dialog.css("margin-top", offset);
-//}
-//$(document).on('show.bs.modal', '.modal', centerModal);
-//$(window).on("resize", function () {
-//	$('.modal:visible').each(centerModal);
-//});
+
