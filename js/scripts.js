@@ -2,7 +2,8 @@
 	"use strict";
 	var	modal = $('#modal'),
 		dialog = $('#modal-dialog'),
-		title = $('#modal-title');
+		title = $('#modal-title'),
+		body = $('#modal-body');
 
 	console.log(scrollbarWidth());
 
@@ -11,6 +12,21 @@
 		$('#modal').addClass('visible');
 		$('#facility-photo').show();
 		$('#facility-departments').show();
+		$('#modal-title').text('Photo + Address + Department List' + $('#modal-title').width());
+
+		if ( $(window).height() > 768 || $(window).width() > 768) {
+			$(body).css({
+				'width': '100%',
+				'height': '100%'
+			});
+		} else {
+			var h_viewport = $(window).height();
+			var h_title = $('#modal-title').height();
+			$(body).css({
+				//'width': '640px',
+				'height': (100 - h_title*100/h_viewport) + '%'
+			});
+		}
 	});
 
 	$('#modal-show2').on('click', function(){
@@ -18,6 +34,20 @@
 		$('#facility-photo').hide();
 		$('#facility-departments').show();
 		$('#modal-title').text('Address + Department List');
+
+		if ( $(window).height() > 768 || $(window).width() > 768) {
+			$(body).css({
+				'width': '100%',
+				'height': '100%'
+			});
+		} else {
+			var h_viewport = $(window).height();
+			var h_title = $('#modal-title').height();
+			$(body).css({
+				//'width': '640px',
+				'height': (100 - h_title*100/h_viewport) + '%'
+			});
+		}
 	});
 
 	$('#modal-show3').on('click', function(){
@@ -25,10 +55,21 @@
 		$('#facility-photo').hide();
 		$('#facility-departments').hide();
 		$('#modal-title').text('Address Only');
-	});
 
-	//$(win).css('margin-left', $(win).width()/2);
-	//console.log($(win).css('margin-left'));
+		if ( $(window).height() > 768 || $(window).width() > 768) {
+			$(body).css({
+				'width': '100%',
+				'height': '100%'
+			});
+		} else {
+			var h_viewport = $(window).height();
+			var h_title = $('#modal-title').height();
+			$(body).css({
+				//'width': '320px',
+				'height': (100 - h_title*100/h_viewport) + '%'
+			});
+		}
+	});
 
 	// handle the close button
 	$('#modal-close').on('click', function(){
