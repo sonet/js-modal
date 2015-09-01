@@ -19,18 +19,11 @@
 	}
 
 	function resizeModal() {
-		if ( $(window).height() > 768 || $(window).width() > 768) {
-			$(_body).css({
-				'width': '100%',
-				'height': '100%'
-			});
-		} else {
-			var h_viewport = $(window).height();
-			var h_title = $(_title).height();
-			$(body).css({
-				'height': (100 - h_title*100/h_viewport) + '%'
-			});
-		}
+		var h_viewport = $(window).height();
+		var h_title = $(_title).height();
+		$(_body).css({
+			'height': (100 - h_title*100/h_viewport) + '%'
+		});
 	}
 
 	// close button
