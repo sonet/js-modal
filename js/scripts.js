@@ -121,10 +121,3 @@
 	});
 
 }(jQuery));
-
-// useful links:
-// http://www.matanich.com/2013/01/07/viewport-size/
-// http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php
-// http://davidwalsh.name/detect-scrollbar-width
-
-
